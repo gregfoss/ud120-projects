@@ -69,9 +69,6 @@ The following is a table of counts of non NaN values. I decided to remove column
   </tr>
 </table>
 
-
-
-
 <h3>Feature Addition</h3>
 The features relating to email need to be modified as their natural number doesn't mean anything. Some people just get or send more email. However, email percentages to and from pois should be a valuable feature. I decided not to include the shared_poi percentage as pois are likely to blanket email departments and also, a poi would not wisely engage in illicit behavior while emailing multiple people at once.
 The following features were added: 
@@ -88,17 +85,21 @@ Subsequently, the features that related to these percentages were removed.
 <li><b>from_messages</b></li>
 
 <h3>Feature Selection</h3>
+The next step is to find those features that have the most importance. To do this I employed SelectKBest and a Random Forest. The results are in the tables below: 
 
+<table style="width:25%">
+  <tr><td>Features</td><td>SelectKBest</td><td>Random Forest</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+</table>
 
- 1) deferred_income           11.1845801
- 2) long_term_incentive       9.6222121
- 3) percent_to_poi            15.9781241
- 4) percent_from_poi          2.9639901
- 5) salary                    17.7178741
- 6) total_payments            9.0792751
- 7) exercised_stock_options   24.4310681
- 8) bonus                     20.2571851
- 9) restricted_stock          8.8641111
-10) total_stock_value         23.6122891
-11) expenses                  5.8153281
-12) other                     4.0852121
