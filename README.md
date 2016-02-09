@@ -83,6 +83,7 @@ Subsequently, the features that related to these percentages were removed.
 <li><b>shared_receipt_with_poi</b></li>
 <li><b>to_messages</b></li>
 <li><b>from_messages</b></li>
+</ol>
 
 <h3>Feature Selection</h3>
 The next step is to find those features that have the most importance. To do this I employed SelectKBest and a Random Forest. The results are in the tables below: 
@@ -104,3 +105,14 @@ The next step is to find those features that have the most importance. To do thi
 </table>
 
 Therefore, I have decided to use all the matching features and include those that did not, salary, other, expenses and deferred_income. I have removed fields 'long_term_incentive', 'percent_from_poi', 'total_payments' and 'restricted_stock.'
+The ending features I decided to use were: <b>deferred_income	percent_to_poi,	salary,	exercised_stock_options,	bonus,	total_stock_value,	expenses,	other.</b>
+
+<h3>Cross-Validation</h3>
+I used sklearn's train_test_split and StratifiedKFold to split my data into training and test splits. The train_test_split ratio I used was 70/30. I found the StratifiedKFold worked more reliably and I used a simple 10 folds. 
+
+<h3>Normalization and Standardization</h3>
+I used sklearn's MinMaxScaler and StandardScaler to respectively normalize and standardize the data. Normalizing the data would take the values and range them from 0 to 1. Standardizing the data will return a standard deviation of the values from a mean of zero. I created and saved three sets to be used easily later. X_train, X_train_norm and X_train_std. 
+
+<h3>Various SkLearn Algorithms</h3>
+
+
