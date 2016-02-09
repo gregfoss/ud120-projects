@@ -1,7 +1,7 @@
 <H1>Enron Email Corpus - Finding Persons of Interest</H1>
 There are not many US citizens who have not heard of Enron; when they do it is in the context of willful corporate greed and fraud. Before its bankruptcy in late 2001 it employed approximately 20,000 employees. (https://en.wikipedia.org/wiki/Enron) This is a project to take the famous Enron Email corpus which is a large dataset of nearly 600,000 emails generated from 158 Enron employees and identify persons of interest (poi). (https://en.wikipedia.org/wiki/Enron_Corpus). A poi is defined by the list of those individuals who were involved in the scandal.
 
-Within the Final_project there is an IPython Notebook titled "Trying Enron with Pandas." It is within this notebook that the work summarized here is found. The poi_id.py file is a requirement for course completion, but not my original or complete workspace. The poi_id.py file will have just the minimum of the requirement to fullfil the course. 
+Within the Final_project there is an IPython Notebook titled <i>Trying Enron with Pandas</i>. It is within this notebook that the work summarized here is found. The poi_id.py file is a requirement for course completion, but not my original or complete workspace. The poi_id.py file will have just the minimum of the requirement to fullfil the course. 
 
 There were three major sources of insight for this project. The first is, of course, the Udacity <i>Introduction to Machine Learning</i> course. The second is <i>Python Machine Learning</i> by Sebastian Raschka. The third is the work of Jason Brownlee at MachineLearningMastery.com
 
@@ -113,6 +113,8 @@ I used sklearn's train_test_split and StratifiedKFold to split my data into trai
 <h3>Normalization and Standardization</h3>
 I used sklearn's MinMaxScaler and StandardScaler to respectively normalize and standardize the data. Normalizing the data would take the values and range them from 0 to 1. Standardizing the data will return a standard deviation of the values from a mean of zero. I created and saved three sets to be used easily later. X_train, X_train_norm and X_train_std. 
 
+I applied Principal Component Analysis when it seemed to work with an algorithm. It didn't often work. I concluded that there is not much dimensionality in this data and this must be the reason PCA was not having much, and often a negative effect. 
+
 <h3>Various SkLearn Algorithms</h3>
 Following are the results of various tried Machine Learning Algorithms. Again, details on how I implemented them are in the <i>Trying Enron with Pandas.ipynb</i>
 <table style="width:25%">
@@ -126,6 +128,12 @@ Following are the results of various tried Machine Learning Algorithms. Again, d
   <tr><td>Adaptive Boosting</td><td>0.89</td><td>0.84</td><td>0.86</td><td>0.43</td><td>0.843 +/- 0.127</td></tr>
 </table>
 
+<h3>Algorithm Parameter Tuning</h3>
+Parameter tuning is fundamental in ensuring that the algorithm is not over or underfit. I played around with the parameters on all the aforementioned algorithms. I ended up using GridSearchCV to optimize the parameters of all these. I did not use GridSearchCV in a pipeline as I was not getting that to work properly. I noted this as something on which I need to work. Again, more detail on my thoughts during this process are in <i>Trying Enron with Pandas.ipynb</i>.
 
-0.87      0.93      0.90        43
+<h3>Final Thoughts</h3>
+This process has been very rewarding and challenging. Probably my largest challenge was to work through the actual Python as I am a beginner. The data was difficult and educating to work with. It is a small dataset, after my data cleaning it had only 141 rows of data and only 18 persons of interest. Through this long process I learned how to use GridSearchCV to find optimal settings for the algorithms, how to validate the data using various tools (not just accuracy), and how to chain processes together via Pipeline. 
+<h4>Recommendations</h4>
+If I would recommend any improvement, it would be to allow people to use other means of programming these algorithms such as the IPython Notebook or even R. As this is not a lesson really in programming, rather in Machine Learning, the code should be secondary. The starter code provided actually caused me more misunderstandings and problems than just working in pandas. My project really got rolling and I gained much more understanding when I disguarded the starter code and just started from nothing. At this point in my project...I still haven't 'retrofitted' my IPython notebook to the layout Udacity requires. 
+
 
