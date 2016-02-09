@@ -14,6 +14,63 @@ The first step was to remove erroneous, or simply useless rows or columns from t
 <li>Any row that did not have more than two non NaN values (including poi and email_address). Only one dropped. </li>
 <li>Column <b>email_address</b> was dropped as it had no value in this process</li>
 </ol>
+The following is a table of counts of non NaN values. I decided to remove columns that did not have many values. The striked rows were removed. 
+<table style="width:25%">
+  <tr>
+    <td>poi</td><td>141</td>
+  </tr>
+  <tr bgcolor="#FF0000">
+    <td><strike>director_fees</strike></td><td>14</td>
+  </tr>
+  <tr>
+    <td>deferred_income</td><td>48</td>
+  </tr>
+  <tr>
+    <td>long_term_incentive</td><td>65</td>
+  </tr>
+  <tr>
+    <td>percent_to_poi</td><td>85</td>
+  </tr>
+  <tr>
+    <td>percent_from_poi</td><td>85</td>
+  </tr>
+  <tr>
+    <td>salary</td><td>94</td>
+  </tr>
+  <tr bgcolor="#FF0000">
+    <td><strike>deferral_payments</strike></td><td>37</td>
+  </tr>
+  <tr>
+    <td>total_payments</td><td>121</td>
+  </tr>
+  <tr>
+    <td>exercised_stock_options</td><td>99</td>
+  </tr>
+  <tr>
+    <td>bonus</td><td>81</td>
+  </tr>
+  <tr>
+    <td>restricted_stock</td><td>108</td>
+  </tr>
+  <tr bgcolor="#FF0000">
+    <td><strike>restricted_stock_deferred</strike></td><td>15</td>
+  </tr>
+  <tr>
+    <td>total_stock_value</td><td>124</td>
+  </tr>
+  <tr>
+    <td>expenses</td><td>94</td>
+  </tr>
+  <tr bgcolor="#FF0000">
+    <td><strike>load_advances</strike></td><td>3</td>
+  </tr>
+  <tr>
+    <td>other</td><td>90</td>
+  </tr>
+</table>
+
+
+
 
 <h3>Feature Addition</h3>
 The features relating to email need to be modified as their natural number doesn't mean anything. Some people just get or send more email. However, email percentages to and from pois should be a valuable feature. I decided not to include the shared_poi percentage as pois are likely to blanket email departments and also, a poi would not wisely engage in illicit behavior while emailing multiple people at once.
@@ -29,3 +86,19 @@ Subsequently, the features that related to these percentages were removed.
 <li><b>shared_receipt_with_poi</b></li>
 <li><b>to_messages</b></li>
 <li><b>from_messages</b></li>
+
+<h3>Feature Selection</h3>
+
+
+ 1) deferred_income           11.1845801
+ 2) long_term_incentive       9.6222121
+ 3) percent_to_poi            15.9781241
+ 4) percent_from_poi          2.9639901
+ 5) salary                    17.7178741
+ 6) total_payments            9.0792751
+ 7) exercised_stock_options   24.4310681
+ 8) bonus                     20.2571851
+ 9) restricted_stock          8.8641111
+10) total_stock_value         23.6122891
+11) expenses                  5.8153281
+12) other                     4.0852121
