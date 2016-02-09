@@ -10,4 +10,6 @@ The first step was to remove erroneous, or simply useless rows or columns from t
 <li>The <b>Total</b> row as this is a spreadsheet anomaly. </li>
 <li>The <b>THE TRAVEL AGENCY IN THE PARK</b> as this is not a person. </li>
 <li>The individuals <b>BHATNAGAR SANJAY</b> and <b>BELFER ROBERT</b>, as their compensation columns did not add up to their <b>total_payments</b>. This could be a typo or data entry error. </li>
+<li>Any row that did not have more than two non NaN values (including poi and email_address). Only one dropped. </li>
+<li>Column <b>email_address</b> was dropped as it had no value in this process</li>
 </ol>
