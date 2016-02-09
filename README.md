@@ -114,5 +114,18 @@ I used sklearn's train_test_split and StratifiedKFold to split my data into trai
 I used sklearn's MinMaxScaler and StandardScaler to respectively normalize and standardize the data. Normalizing the data would take the values and range them from 0 to 1. Standardizing the data will return a standard deviation of the values from a mean of zero. I created and saved three sets to be used easily later. X_train, X_train_norm and X_train_std. 
 
 <h3>Various SkLearn Algorithms</h3>
+Following are the results of various tried Machine Learning Algorithms. Again, details on how I implemented them are in the <i>Trying Enron with Pandas.ipynb</i>
+<table style="width:25%">
+  <tr><td><b><i>Algorithm</b></i></td><td><b><i>Precision</b></i></td><td><b><i>Recall</b></i></td><td><b><i>F1-score</b></i></td>
+      <td><b><i>Support</b></i></td><td><b><i>Cross-Val Accuracy</b></i></td></tr>
+  <tr><td>K-Nearest</td><td>0.91</td><td>0.72</td><td>0.79</td><td>0.43</td><td>0.891 +/- 0.077</td></tr>
+  <tr><td>K-Nearest (piped)</td><td>0.90</td><td>0.88</td><td>0.89</td><td>0.43</td><td>0.809 +/- 0.111</td></tr>
+  <tr><td>Support Vector Machine</td><td>0.90</td><td>0.88</td><td>0.89</td><td>0.43</td><td>0.850 +/- 0.039</td></tr>
+  <tr><td>Decision Tree</td><td>0.91</td><td>0.91</td><td>0.91</td><td>0.43</td><td>0.792 +/- 0.102</td></tr>
+  <tr><td>Logistic Regression</td><td>0.87</td><td>0.93</td><td>0.90</td><td>0.43</td><td>0.855 +/- 0.085</td></tr>
+  <tr><td>Adaptive Boosting</td><td>0.89</td><td>0.84</td><td>0.86</td><td>0.43</td><td>0.843 +/- 0.127</td></tr>
+</table>
 
+
+0.87      0.93      0.90        43
 
