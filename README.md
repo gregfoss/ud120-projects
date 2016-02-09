@@ -88,7 +88,7 @@ Subsequently, the features that related to these percentages were removed.
 The next step is to find those features that have the most importance. To do this I employed SelectKBest and a Random Forest. The results are in the tables below: 
 
 <table style="width:25%">
-  <tr><td>Features</td><td>SelectKBest</td><td>Random Forest</td></tr>
+  <tr><td><b><i>Features</b></i></td><td><b><i>SelectKBest</b></i></td><td><b><i>Random Forest</b></i></td></tr>
   <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
   <tr><td>long_term_incentive</td><td>9.6222121</td><td>0.058101</td></tr>
   <tr><td>percent_to_poi</td><td>15.9781241</td><td>0.124385</td></tr>
