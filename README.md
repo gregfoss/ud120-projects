@@ -103,3 +103,4 @@ The next step is to find those features that have the most importance. To do thi
   <tr><td>other</td><td>4.0852121</td><td>0.093490</td></tr>
 </table>
 
+Therefore, I have decided to use all the matching features and include those that did not, salary, other, expenses and deferred_income. I have removed fields 'long_term_incentive', 'percent_from_poi', 'total_payments' and 'restricted_stock.'
