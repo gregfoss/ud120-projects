@@ -90,16 +90,16 @@ The next step is to find those features that have the most importance. To do thi
 <table style="width:25%">
   <tr><td>Features</td><td>SelectKBest</td><td>Random Forest</td></tr>
   <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
-  <tr><td>deferred_income</td><td>11.1845801</td><td>0.064717</td></tr>
+  <tr><td>long_term_incentive</td><td>9.6222121</td><td>0.058101</td></tr>
+  <tr><td>percent_to_poi</td><td>15.9781241</td><td>0.124385</td></tr>
+  <tr><td>percent_from_poi</td><td>2.9639901</td><td>0.061409</td></tr>
+  <tr><td>salary</td><td>17.7178741</td><td>0.065869</td></tr>
+  <tr><td>total_payments</td><td>9.0792751</td><td>0.069305</td></tr>
+  <tr><td>exercised_stock_options</td><td>24.4310681</td><td>0.109634</td></tr>
+  <tr><td>bonus</td><td>20.2571851</td><td>0.105969</td></tr>
+  <tr><td>restricted_stock</td><td>8.8641111</td><td>0.064484</td></tr>
+  <tr><td>total_stock_value</td><td>23.6122891</td><td>0.092194</td></tr>
+  <tr><td>expenses</td><td>5.8153281</td><td>0.090443</td></tr>
+  <tr><td>other</td><td>4.0852121</td><td>0.093490</td></tr>
 </table>
 
