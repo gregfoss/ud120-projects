@@ -119,15 +119,21 @@ I applied Principal Component Analysis when it seemed to work with an algorithm.
 
 <h3>Various SkLearn Algorithms</h3>
 Following are the results of various tried Machine Learning Algorithms. Again, details on how I implemented them are in the <i>Trying Enron with Pandas.ipynb</i> Note that the values below are from sklearn.metrics classification_report and do not have the same results as I received from the tester.py provided by Udacity. 
-<table style="width:25%">
+<table style="width:50%">
   <tr><td><b><i>Algorithm</b></i></td><td><b><i>Precision</b></i></td><td><b><i>Recall</b></i></td><td><b><i>F1-score</b></i></td>
       <td><b><i>Support</b></i></td><td><b><i>Cross-Val Accuracy</b></i></td></tr>
-  <tr><td>K-Nearest</td><td>0.91</td><td>0.72</td><td>0.79</td><td>0.43</td><td>0.891 +/- 0.077</td></tr>
-  <tr><td>K-Nearest (piped)</td><td>0.90</td><td>0.88</td><td>0.89</td><td>0.43</td><td>0.809 +/- 0.111</td></tr>
-  <tr><td>Support Vector Machine</td><td>0.90</td><td>0.88</td><td>0.89</td><td>0.43</td><td>0.850 +/- 0.039</td></tr>
-  <tr><td>Decision Tree</td><td>0.91</td><td>0.91</td><td>0.91</td><td>0.43</td><td>0.792 +/- 0.102</td></tr>
-  <tr><td>Logistic Regression</td><td>0.87</td><td>0.93</td><td>0.90</td><td>0.43</td><td>0.855 +/- 0.085</td></tr>
-  <tr><td>Adaptive Boosting</td><td>0.89</td><td>0.84</td><td>0.86</td><td>0.43</td><td>0.843 +/- 0.127</td></tr>
+  <tr><td>K-Nearest (true)</td><td>0.97</td><td>0.72</td><td>0.83</td><td>40</td><td>0.891 +/- 0.077</td></tr>
+  <tr><td>K-Nearest (false)</td><td>0.15</td><td>0.67</td><td>0.25</td><td>3</td><td>0.891 +/- 0.077</td></tr>
+  <tr><td>K-Nearest (piped true)</td><td>0.95</td><td>0.93</td><td>0.94</td><td>40</td><td>0.809 +/- 0.111</td></tr>
+  <tr><td>K-Nearest (piped false)</td><td>0.25</td><td>0.33</td><td>0.29</td><td>3</td><td>0.809 +/- 0.111</td></tr>
+  <tr><td>Support Vector Machine (true)</td><td>1</td><td>.03</td><td>0.05</td><td>40</td><td>0.850 +/- 0.039</td></tr>
+  <tr><td>Support Vector Machine (false)</td><td>.07</td><td>1</td><td>0.13</td><td>3</td><td>0.850 +/- 0.039</td></tr>
+  <tr><td>Decision Tree (true)</td><td>0.95</td><td>0.95</td><td>0.95</td><td>40</td><td>0.792 +/- 0.102</td></tr>
+  <tr><td>Decision Tree (false)</td><td>0.33</td><td>0.33</td><td>0.33</td><td>3</td><td>0.792 +/- 0.102</td></tr>
+  <tr><td>Logistic Regression (true)</td><td>93</td><td>1</td><td>96</td><td>40</td><td>0.855 +/- 0.085</td></tr>
+  <tr><td>Logistic Regression (false)</td><td>0.00</td><td>0.00</td><td>0.00</td><td>3</td><td>0.855 +/- 0.085</td></tr>
+  <tr><td>Adaptive Boosting (true)</td><td>0.97</td><td>0.82</td><td>0.89</td><td>40</td><td>0.843 +/- 0.127</td></tr>
+  <tr><td>Adaptive Boosting (false)</td><td>0.22</td><td>0.67</td><td>0.33</td><td>3</td><td>0.843 +/- 0.127</td></tr>
 </table>
 
 <h3>Algorithm Parameter Tuning</h3>
