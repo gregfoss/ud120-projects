@@ -1,16 +1,18 @@
 <H1>Enron Email Corpus - Finding Persons of Interest</H1>
 There are not many US citizens who have not heard of Enron; when they do it is in the context of willful corporate greed and fraud. Before its bankruptcy in late 2001 it employed approximately 20,000 employees. (https://en.wikipedia.org/wiki/Enron) This is a project to take the famous Enron Email corpus which is a large dataset of nearly 600,000 emails generated from 158 Enron employees and identify persons of interest (poi). (https://en.wikipedia.org/wiki/Enron_Corpus). A poi is defined by the list of those individuals who were involved in the scandal.
 
-Within the Final_project there is an IPython Notebook titled <i>Trying Enron with Pandas</i>. It is within this notebook that the work summarized here is found. The poi_id.py file is a requirement for course completion, but not my original or complete workspace. The poi_id.py file will have just the minimum of the requirement to fullfil the course. 
+Within the Final_project there is an IPython Notebook titled <i>Trying Enron with Pandas</i>. It is within this notebook that the work summarized here is found. The poi_id.py file is a requirement for course completion, but not my original or complete workspace. The poi_id.py file will have just the minimum of the requirement to fullfil the course and only the single algorithm that I found most effective. 
 
 There were three major sources of insight for this project. The first is, of course, the Udacity <i>Introduction to Machine Learning</i> course. The second is <i>Python Machine Learning</i> by Sebastian Raschka. The third is the work of Jason Brownlee at MachineLearningMastery.com
 
 <h3>Exploring and Removing Obvious Problems</h3>
+There were 146 features and 18 pois in this dataset. 
+Outliers were clearly identified in the salary and bonus features however, these outliers are valuable and not removed. One outstanding outlier in this area was removed...that was 'TOTAL' as this was clearly a spreadsheet anomaly.  
 The first step was to remove erroneous, or simply useless rows or columns from the dataset. The following were removed: 
 <ol>
-<li>The <b>Total</b> row as this is a spreadsheet anomaly. </li>
+<li>The <b>TOTAL</b> row as this is a spreadsheet anomaly. </li>
 <li>The <b>THE TRAVEL AGENCY IN THE PARK</b> as this is not a person. </li>
-<li>The individuals <b>BHATNAGAR SANJAY</b> and <b>BELFER ROBERT</b>, as their compensation columns did not add up to their <b>total_payments</b>. This could be a typo or data entry error. </li>
+<li>The individuals <b>BHATNAGAR SANJAY</b> and <b>BELFER ROBERT</b>, as their compensation columns did not add up to their <b>total_payments</b>. This could be a typo or data entry error, but I did not trust that the data for these two was accurate.</li>
 <li>Any row that did not have more than two non NaN values (including poi and email_address). Only one dropped. </li>
 <li>Column <b>email_address</b> was dropped as it had no value in this process</li>
 </ol>
@@ -105,7 +107,7 @@ The next step is to find those features that have the most importance. To do thi
 </table>
 
 Therefore, I have decided to use all the matching features and include those that did not, salary, other, expenses and deferred_income. I have removed fields 'long_term_incentive', 'percent_from_poi', 'total_payments' and 'restricted_stock.'
-The ending features I decided to use were: <b>deferred_income	percent_to_poi,	salary,	exercised_stock_options,	bonus,	total_stock_value,	expenses,	other.</b>
+The ending features I decided to use were: <b>deferred_income, percent_to_poi, salary,	exercised_stock_options,	bonus,	total_stock_value, expenses, other.</b>
 
 <h3>Cross-Validation</h3>
 I used sklearn's train_test_split and StratifiedKFold to split my data into training and test splits. The train_test_split ratio I used was 70/30. I found the StratifiedKFold worked more reliably and I used a simple 10 folds. 
@@ -116,7 +118,7 @@ I used sklearn's MinMaxScaler and StandardScaler to respectively normalize and s
 I applied Principal Component Analysis when it seemed to work with an algorithm. It didn't often work. I concluded that there is not much dimensionality in this data and this must be the reason PCA was not having much, and often a negative effect. 
 
 <h3>Various SkLearn Algorithms</h3>
-Following are the results of various tried Machine Learning Algorithms. Again, details on how I implemented them are in the <i>Trying Enron with Pandas.ipynb</i>
+Following are the results of various tried Machine Learning Algorithms. Again, details on how I implemented them are in the <i>Trying Enron with Pandas.ipynb</i> Note that the values below are from sklearn.metrics classification_report and do not have the same results as I received from the tester.py provided by Udacity. 
 <table style="width:25%">
   <tr><td><b><i>Algorithm</b></i></td><td><b><i>Precision</b></i></td><td><b><i>Recall</b></i></td><td><b><i>F1-score</b></i></td>
       <td><b><i>Support</b></i></td><td><b><i>Cross-Val Accuracy</b></i></td></tr>
@@ -129,7 +131,14 @@ Following are the results of various tried Machine Learning Algorithms. Again, d
 </table>
 
 <h3>Algorithm Parameter Tuning</h3>
-Parameter tuning is fundamental in ensuring that the algorithm is not over or underfit. I played around with the parameters on all the aforementioned algorithms. I ended up using GridSearchCV to optimize the parameters of all these. I did not use GridSearchCV in a pipeline as I was not getting that to work properly. I noted this as something on which I need to work. Again, more detail on my thoughts during this process are in <i>Trying Enron with Pandas.ipynb</i>.
+Parameter tuning is fundamental in ensuring that the algorithm is not over or underfit. I played around with the parameters on all the aforementioned algorithms. I ended up using GridSearchCV to optimize the parameters of all these. I did not use GridSearchCV in a pipeline as I was not getting that to work properly. I noted this as something on which I need to work. Again, more detail on my thoughts during this process are in <i>Trying Enron with Pandas.ipynb</i>. 
+
+Here is where confession comes in. I ended up picking KNeighbors as the classifier that performed the best. It was also probably the easiest to implement. But I didn't want to pick KNeighbors, it was not as fancy as Adaboost and I thought surely I could tune Adaboost to beat the tar out of KNeighbors. KNeighbors had simple options, Adaboost was more difficult conceptually. For instance, to tune Adaboost I used a range of n_estimators from 1 to 200 for a real and discrete classifier of Adaboost and ran then through GridSearchCV. I then waited about 20 minutes and it came back with a result that said my optimal parameters for my dataset were: 
+"Best parameters of Adaboost SAMME.R: {'n_estimators': 19}"
+"Best scrore of Adaboost SAMME.R: 0.908163265306"
+I tried tuning Adaboost in every way I could imagine and every way I could find in research, but that is the best I could get out of it. Unfortunately, when evaluated for precision and recall...it did poorly on precision. Meanwhile, the simple and scrappy little KNeighbors classifier that I had long ago dismissed as a simpleton, had an accuracy of 91 and a precision double that of Adaboost. 
+Then I realised...I hadn't even bothered with Naive-Bayes, so I tried that. 
+
 
 <h3>Final Thoughts</h3>
 This process has been very rewarding and challenging. Probably my largest challenge was to work through the actual Python as I am a beginner. The data was difficult and educating to work with. It is a small dataset, after my data cleaning it had only 141 rows of data and only 18 persons of interest. Through this long process I learned how to use GridSearchCV to find optimal settings for the algorithms, how to validate the data using various tools (not just accuracy), and how to chain processes together via Pipeline. 
