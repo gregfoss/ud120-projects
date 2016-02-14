@@ -88,7 +88,7 @@ Subsequently, the features that related to these percentages were removed.
 </ol>
 
 <h3>Feature Selection</h3>
-The next step is to find those features that have the most importance. To do this I employed SelectKBest and a Random Forest. The results are in the tables below: 
+The next step is to find those features that have the most importance. To do this I employed SelectKBest and the feature.importance_ values from a Random Forest. The results are in the tables below: 
 
 <table style="width:25%">
   <tr><td><b><i>Features</b></i></td><td><b><i>SelectKBest</b></i></td><td><b><i>Random Forest</b></i></td></tr>
@@ -106,11 +106,11 @@ The next step is to find those features that have the most importance. To do thi
   <tr><td>other</td><td>4.0852121</td><td>0.093490</td></tr>
 </table>
 
-Therefore, I have decided to use all the matching features and include those that did not, salary, other, expenses and deferred_income. I have removed fields 'long_term_incentive', 'percent_from_poi', 'total_payments' and 'restricted_stock.'
-The ending features I decided to use were: <b>deferred_income, percent_to_poi, salary,	exercised_stock_options,	bonus,	total_stock_value, expenses, other.</b>
+I chose the top five values from both SelectKBest and the Random Forest feature.importances_. Because they were not exactly the same I ended up with a total of eight features in my selection. These were: <b>deferred_income, percent_to_poi, salary,	exercised_stock_options,	bonus,	total_stock_value, expenses, other.</b> I then removed the fields that were not in the top five of either the SelectKBest or the Random Forest feature.importances_.  
 
 <h3>Cross-Validation</h3>
-I used sklearn's train_test_split and StratifiedKFold to split my data into training and test splits. The train_test_split ratio I used was 70/30. I found the StratifiedKFold worked more reliably and I used a simple 10 folds. 
+Cross-validation is the process of randomly splitting the data into training and testing sets. It is important not to just split the data down the middle as often data might be sorted in a particular way...leading to a training set that is nothing like the testing set. A popular technique when training and testing the data is not to split the data into two components, but into three. These would be a training set, a validation set and a testing set. This is because with just a training and testing set over the course of multiple tests during the model selection process the test set, in so many words, becomes the training set and leads to overfitting. However, in this case, we have a very very small set of data and splitting the data into three parts is just not feasible. 
+I used sklearn's train_test_split and StratifiedKFold to split my data into training and test splits. The train_test_split ratio I used was 70/30. I found the StratifiedKFold worked more reliably and I used a simple 10 folds. In the case of a fold of 10, the training set is divided into 10 pieces. During the 10 iterations, 9 of the folds are used for training and 1 is used for testing. There is a special case of k-fold that is referred to as the <i>leave-one-out</i> method. It is recommended for very small datasets and is when the number of folds equals the number of training samples so that only one training sample is used for testing during each iteration. I did not employ this technique with much success. 
 
 <h3>Normalization and Standardization</h3>
 I used sklearn's MinMaxScaler and StandardScaler to respectively normalize and standardize the data. Normalizing the data would take the values and range them from 0 to 1. Standardizing the data will return a standard deviation of the values from a mean of zero. I created and saved three sets to be used easily later. X_train, X_train_norm and X_train_std. 
